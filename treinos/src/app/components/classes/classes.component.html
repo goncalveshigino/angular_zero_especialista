@@ -1,0 +1,31 @@
+<div [ngClass]="alerta" class="alert" role="alert">
+  <strong>A simple</strong> primary alert—check it out!
+</div>
+
+<button type="button"  class="btn btn-outline-info" (click) ="alerta='alert-info'">Info</button>
+
+<button type="button"  class="btn btn-outline-success" (click) =" alerta='alert-success'">Success</button>
+
+<br><br>
+
+<h3 [ngClass]=" { 'text-danger': propriedade, 'text-info': !propriedade } " >
+    Hello world
+</h3>
+
+<button (click)="propriedade = !propriedade"
+type="button" name="button"
+class="btn"
+[ngClass]=" { 'btn-danger': propriedade, 'btn-info': !propriedade} "
+>
+Trocar
+</button>
+
+
+<br><br>
+
+<h3>Processo Assincrono</h3> 
+
+
+<button class="btn btn-primary" type="button" name="button">
+  Guardar  
+</button>
