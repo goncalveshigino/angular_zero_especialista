@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CallbackComponent } from './components/callback/callback.component';
 
 import { HomeComponent } from './components/home/home.component';
 import { PriceComponent } from './components/price/price.component';
@@ -9,7 +10,8 @@ const routes: Routes = [
 
     { path: 'home',               component: HomeComponent },
     { path: 'price',             component: PriceComponent },
-    { path: 'protected',          component: ProtectedComponent },
+    { path: 'protected', component: ProtectedComponent },
+    { path: 'callback', component: CallbackComponent },
     { path: '**', pathMatch: 'full',redirectTo: 'home' },
 ];
 
