@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  // Create an observable of Auth0 instance of client
+  // Crie uma instância observável de Auth0 do cliente
   auth0Client$ = (from(
     createAuth0Client({
       domain: "dev-r69inw-x.us.auth0.com",
@@ -18,13 +18,13 @@ export class AuthService {
       redirect_uri: `${window.location.origin}/callback`
     })
   ) as Observable<Auth0Client>).pipe(
-    shareReplay(1), // Every subscription receives the same shared value
+    shareReplay(1), // Cada assinatura recebe o mesmo valor compartilhado
     catchError(err => throwError(err))
   );
-  // Define observables for SDK methods that return promises by default
-  // For each Auth0 SDK method, first ensure the client instance is ready
-  // concatMap: Using the client instance, call SDK method; SDK returns a promise
-  // from: Convert that resulting promise into an observable
+ // Definir observáveis ​​para métodos SDK que retornam promessas por padrão
+  // Para cada método Auth0 SDK, primeiro verifique se a instância do cliente está pronta
+  // concatMap: Usando a instância do cliente, chame o método SDK; SDK retorna uma promessa
+  // de: converter essa promessa resultante em um observável
   isAuthenticated$ = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.isAuthenticated())),
     tap(res => this.loggedIn = res)
@@ -32,7 +32,7 @@ export class AuthService {
   handleRedirectCallback$ = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.handleRedirectCallback()))
   );
-  // Create subject and public observable of user profile data
+  // Criar assunto e observável público de dados de perfil de usuário
   private userProfileSubject$ = new BehaviorSubject<any>(null);
   userProfile$ = this.userProfileSubject$.asObservable();
   // Create a local property for login status
@@ -40,7 +40,7 @@ export class AuthService {
 
   constructor(private router: Router) { }
 
-  // When calling, options can be passed if desired
+  // Ao chamar, as opções podem ser passadas, se desejado
   // https://auth0.github.io/auth0-spa-js/classes/auth0client.html#getuser
   getUser$(options?: GetUserOptions): Observable<any> {
     return this.auth0Client$.pipe(
@@ -50,13 +50,13 @@ export class AuthService {
   }
 
   localAuthSetup() {
-    // This should only be called on app initialization
-    // Set up local authentication streams
+  // Isso só deve ser chamado na inicialização do aplicativo
+    // Configurar autenticação local stream
     const checkAuth$ = this.isAuthenticated$.pipe(
       concatMap((loggedIn: boolean) => {
         if (loggedIn) {
-          // If authenticated, get user and set in app
-          // NOTE: you could pass options here if needed
+         // Se autenticado, obtém o usuário e define no aplicativo
+          // NOTA: você pode passar opções aqui se necessário
           return this.getUser$();
         }
         // If not authenticated, return stream that emits 'false'
@@ -85,13 +85,13 @@ export class AuthService {
 
   
   handleAuthCallback() {
-    // Only the callback component should call this method
-    // Call when app reloads after user logs in with Auth0
-    let targetRoute: string; // Path to redirect to after login processsed
+    // Apenas o componente de retorno de chamada deve chamar este método
+    // Chamar quando o aplicativo recarregar após o usuário fazer login com Auth0
+    let targetRoute: string;  // Caminho para redirecionar após o processo de login
     const authComplete$ = this.handleRedirectCallback$.pipe(
       // Have client, now call method to handle auth callback redirect
       tap(cbRes => {
-        // Get and set target redirect route from callback results
+       // Obter e definir a rota de redirecionamento de destino dos resultados de retorno de chamada
         targetRoute = cbRes.appState && cbRes.appState.target ? cbRes.appState.target : '/';
       }),
       concatMap(() => {
@@ -103,10 +103,12 @@ export class AuthService {
       })
       
     );
-    // Subscribe to authentication completion observable
-    // Response will be an array of user and login status
+  
+    // Inscrever-se para conclusão de autenticação observável
+    // A resposta será uma matriz de usuário e status de login
     authComplete$.subscribe(([user, loggedIn]) => {
-      // Redirect to target route after callback processing
+         
+     // Redirecionar para a rota de destino após o processamento do retorno de chamada
       this.router.navigate([targetRoute]);
     });
   }
