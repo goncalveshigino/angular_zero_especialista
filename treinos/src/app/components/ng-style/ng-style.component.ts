@@ -9,13 +9,17 @@ import { Component, OnInit } from '@angular/core';
      Ola mundo esta na hora
     </p>
 
-    <button class="btn btn-primary" (click)="size = size + 5">
+   <div class="mb-2">
+   
+    <button class="btn btn-primary " (click)="size = size + 5">
     <i class="fa fa-plus"></i>
     </button>
 
     <button class="btn btn-danger" (click)="size = size - 5">
     <i class="fa fa-minus"></i>
     </button>
+   
+   <div>
 
 
   `,
