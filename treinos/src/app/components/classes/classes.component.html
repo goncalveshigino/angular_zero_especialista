@@ -29,9 +29,12 @@ Trocar
 <button (click)="executar()"
   class="btn btn-primary" 
   type="button" 
-  name="button">
+  name="button"
+  [disabled]="loading"
+  >
 
   <i [ngClass]=" {'fa-save': !loading, 'fa-refresh fa-spin': loading} "
     class="fa"></i>
-  Guardar  
+ <span *ngIf="!loading">Salvar trocas</span>
+ <span *ngIf="loading">Espere por favor</span>
 </button>
