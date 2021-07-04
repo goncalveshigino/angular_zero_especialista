@@ -26,6 +26,12 @@ Trocar
 <h3>Processo Assincrono</h3> 
 
 
-<button class="btn btn-primary" type="button" name="button">
+<button (click)="executar()"
+  class="btn btn-primary" 
+  type="button" 
+  name="button">
+
+  <i [ngClass]=" {'fa-save': !loading, 'fa-refresh fa-spin': loading} "
+    class="fa"></i>
   Guardar  
 </button>
