@@ -33,9 +33,8 @@
             ],
             "styles": [
    
-              "src/styles.css",
-               "./src/assets/b4/css/bootstrap.min.css",
-               "./src/assets/font-awesome/css/font-awesome.min.css"
+              "src/styles.css"
+              
             ],
             "scripts": [
               "./src/assets/jquery/jquery.slim.min.js", 

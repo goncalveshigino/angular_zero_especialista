@@ -8,6 +8,7 @@ export class ClassesComponent implements OnInit {
 
 
   alerta: string = "alert-danger";
+  loading: boolean = false;
 
   // propriedades: Object = {
 
@@ -19,6 +20,15 @@ export class ClassesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  executar() {
+    
+
+    this.loading = true;
+    
+    setTimeout( () => this.loading = false, 3000)
+
   }
 
 }
