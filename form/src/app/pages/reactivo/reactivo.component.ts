@@ -41,7 +41,10 @@ export class ReactivoComponent implements OnInit {
       nome   : ['', [Validators.required, Validators.minLength(5) ] ],
       apelido: ['', Validators.required ],
       email  : ['', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')] ],
-      rirecao:  ['']       
+      direcao: this.fb.group({
+        destrito: ['', Validators.required],
+        cidade: ['', Validators.required]
+      })     
     });
 
     

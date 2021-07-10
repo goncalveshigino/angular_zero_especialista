@@ -6,7 +6,7 @@
 
     <div class="form-group row">
       <label class="col-2 col-form-label">Nome</label>
-      <div class="col-8">
+      <div class="col">
 
         <input 
            class="form-control"
@@ -27,7 +27,7 @@
 
     <div class="form-group row">
       <label class="col-2 col-form-label">Apelido</label>
-      <div class="col-8">
+      <div class="col">
 
         <input 
            class="form-control"
@@ -47,7 +47,7 @@
 
   <div class="form-group row">
     <label class="col-2 col-form-label">Email</label>
-    <div class="col-8">
+  <div class="col">
 
       <input 
          class="form-control"
@@ -64,11 +64,39 @@
     </div>
   </div>
 
+    <div class="form-group row" formGroupName="direcao">
+       <label class="col-2 col-form-label">Direcao</label>
+    <div class="form-row col"> 
+
+
+        <div class="col">
+
+          <input type="text"
+                 class="form-control"
+                 placeholder="Destrito"
+                 formControlName="destrito"
+               >
+
+        </div>  
+
+        <div class="col">
+
+          <input type="text"
+                 class="form-control"
+                 placeholder="Cidade"
+                 formControlName="cidade"
+               >
+
+        </div>
+
+      </div>
+    </div> 
+
 
 
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
-    <div class="input-group col-md-8">
+    <div class="input-group col">
       <button type="submit" class="btn btn-outline-primary btn-block">
         Guardar
       </button>
