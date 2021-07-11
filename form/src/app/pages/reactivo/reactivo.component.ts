@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ValidatorsService } from 'src/app/services/validators.service';
 
 @Component({
   selector: 'app-reactivo',
@@ -10,7 +11,8 @@ export class ReactivoComponent implements OnInit {
   
   public forma!: FormGroup;
 
-  constructor(  private fb: FormBuilder )  {
+  constructor(  private fb: FormBuilder,
+                private validadores: ValidatorsService )  {
     
 
     this.criarFormulario();
@@ -54,7 +56,7 @@ export class ReactivoComponent implements OnInit {
     this.forma = this.fb.group({
       
       nome   : ['', [Validators.required, Validators.minLength(5) ] ],
-      apelido: ['', Validators.required ],
+      apelido: ['', [Validators.required, this.validadores.noGonza ] ],
       email  : ['', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')] ],
       direcao: this.fb.group({
         destrito: ['', Validators.required],
@@ -82,7 +84,7 @@ export class ReactivoComponent implements OnInit {
       }
     });
 
-    
+
   }
   
 
