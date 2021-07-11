@@ -117,7 +117,7 @@
                   [formControlName]="i">
              </td>
              <td>
-               <button class="btn btn-danger">
+               <button class="btn btn-danger" (click)="eleminarPassaTempo(i)">
                  Apagar
                </button>
              </td>
@@ -127,7 +127,8 @@
 
        <button 
           class="btn btn-primary mt-3 mb-5 btn-block"
-          type="button">
+          type="button"
+          (click)="addPassaTempo()">
             +Add
        </button>
 

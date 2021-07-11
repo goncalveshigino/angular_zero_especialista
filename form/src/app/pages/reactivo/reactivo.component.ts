@@ -61,7 +61,7 @@ export class ReactivoComponent implements OnInit {
         cidade: ['', Validators.required]
       }),
       passaTempos: this.fb.array([
-        [],[],[]
+       
       ])    
     });
  
@@ -80,7 +80,9 @@ export class ReactivoComponent implements OnInit {
         destrito: "Figo",
         cidade: "Luango"
       }
-    })
+    });
+
+    
   }
   
 
@@ -109,6 +111,15 @@ export class ReactivoComponent implements OnInit {
     //   {  nome: "Deus e amor"}
     //   );
 
+  }
+
+  addPassaTempo() {
+    
+   this.passaTempos.push( this.fb.control( '') )
+  }
+
+  eleminarPassaTempo(i: number) {
+    this.passaTempos.removeAt(i);
   }
 
 
