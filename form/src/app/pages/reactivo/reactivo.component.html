@@ -75,6 +75,7 @@
                  class="form-control"
                  placeholder="Destrito"
                  formControlName="destrito"
+                 [class.is-invalid]="destritoInvalido"
                >
 
         </div>  
@@ -85,12 +86,53 @@
                  class="form-control"
                  placeholder="Cidade"
                  formControlName="cidade"
+                 [class.is-invalid]="cidadeInvalido"
                >
 
         </div>
 
       </div>
     </div> 
+
+
+
+    <div class="row" >
+      <div class="col"> 
+          
+       <table class="table">
+         <thead class="thead-dark">
+           <tr>
+             <th>ID</th>
+             <th>passaTempo</th>
+             <th>Eliminar</th>
+           </tr>
+         </thead>
+         <tbody formArrayName="passaTempos">
+           <tr *ngFor="let control of passaTempos.controls; let i = index">
+             <td>{{ i + 1}}</td>
+             <td>
+               <input 
+                  class="form-control"
+                  type="text"
+                  [formControlName]="i">
+             </td>
+             <td>
+               <button class="btn btn-danger">
+                 Apagar
+               </button>
+             </td>
+           </tr>
+         </tbody>
+       </table>
+
+       <button 
+          class="btn btn-primary mt-3 mb-5 btn-block"
+          type="button">
+            +Add
+       </button>
+
+       </div>
+    </div>
 
 
 
