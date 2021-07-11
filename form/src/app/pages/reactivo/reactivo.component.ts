@@ -16,6 +16,7 @@ export class ReactivoComponent implements OnInit {
     
 
     this.criarFormulario();
+    this.criarListeners();
     this.carregarDadosForm();
    
   }
@@ -88,7 +89,22 @@ export class ReactivoComponent implements OnInit {
       validators: this.validadores.passwordIguais('pass1','pass2')
     });
  
-  } 
+  }
+  
+  //Saber quando a alteracao no formulario
+  criarListeners() {
+
+    // this.forma.valueChanges.subscribe(valor => {
+      
+    //   console.log(valor);
+
+    // })
+
+    // this.forma.statusChanges.subscribe(status => console.log({ status }));
+    
+    this.forma.get('nome').valueChanges.subscribe( console.log)
+
+  }
 
 
   carregarDadosForm() {
