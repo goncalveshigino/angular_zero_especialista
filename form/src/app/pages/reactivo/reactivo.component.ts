@@ -37,6 +37,10 @@ export class ReactivoComponent implements OnInit {
     return this.forma.get('email').invalid && this.forma.get('email').touched
   }
 
+  get usuarioNoValido() {
+     return this.forma.get('usuario').invalid && this.forma.get('usuario').touched
+  }
+
   get destritoInvalido() {
     return this.forma.get('direcao.destrito').invalid && this.forma.get('direcao.destrito').touched
   }
@@ -49,25 +53,42 @@ export class ReactivoComponent implements OnInit {
     return this.forma.get('passaTempos') as FormArray;
   }
 
+
+  get pass1NoValido() {
+    
+    return this.forma.get('pass1').invalid && this.forma.get('pass1').touched;
+  }
+
+   get pass2NoValido() {
+    
+     const pass1 = this.forma.get('pass1').value;
+     const pass2 = this.forma.get('pass1').value;
+     
+     return (pass1 === pass2) ? false : true;
+  }
+
   
 
   criarFormulario() {
 
     this.forma = this.fb.group({
       
-      nome   : ['', [Validators.required, Validators.minLength(5) ] ],
-      apelido: ['', [Validators.required, this.validadores.noGonza ] ],
-      email  : ['', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')] ],
-      direcao: this.fb.group({
+      nome     : ['', [Validators.required, Validators.minLength(5) ] ],
+      apelido  : ['', [Validators.required, this.validadores.noGonza ] ],
+      email    : ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      usuario  : ['', , this.validadores.existeUsuario ],
+      pass1    : ['',Validators.required, ],
+      pass2    : ['', [Validators.required]],
+      direcao  : this.fb.group({
         destrito: ['', Validators.required],
-        cidade: ['', Validators.required]
+        cidade  : ['', Validators.required]
       }),
-      passaTempos: this.fb.array([
-       
-      ])    
+      passaTempos: this.fb.array([])    
+    }, {
+      validators: this.validadores.passwordIguais('pass1','pass2')
     });
  
-  } else
+  } 
 
 
   carregarDadosForm() {
@@ -78,6 +99,8 @@ export class ReactivoComponent implements OnInit {
       nome: "Gonza",
       apelido: "Higino",
       email: "higino@gmail.com",
+      pass1: "123",
+      pass2: "123",
       direcao: {
         destrito: "Figo",
         cidade: "Luango"

@@ -62,7 +62,61 @@
         </small>
          
     </div>
+  </div>  
+
+    <div class="form-group row">
+    <label class="col-2 col-form-label">Usuario</label>
+  <div class="col">
+
+      <input 
+         class="form-control"
+         type="email"
+         placeholder="Nome do usuario"
+         formControlName="usuario"
+         [class.is-invalid]="usuarioNoValido"
+      >
+
+        <small *ngIf="usuarioNoValido" class="text-danger">
+             Esse nome ja existe
+        </small>
+         
+    </div>
+  </div>  
+
+
+  
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Password</label>
+  <div class="col">
+
+      <input 
+         class="form-control"
+         type="text"
+         placeholder="Password"
+         formControlName="pass1"
+         [class.is-invalid]="pass1NoValido"
+      >
+         
+    </div>
+  </div> 
+
+    
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Repitir</label>
+  <div class="col">
+
+      <input 
+         class="form-control"
+         type="text"
+         placeholder="Repitir Password"
+         formControlName="pass2"
+         [class.is-invalid]="pass2NoValido"
+      >
+         
+    </div>
   </div>
+
+
 
     <div class="form-group row" formGroupName="direcao">
        <label class="col-2 col-form-label">Direcao</label>
