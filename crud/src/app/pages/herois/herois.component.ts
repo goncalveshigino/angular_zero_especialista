@@ -11,18 +11,23 @@ import Swal from 'sweetalert2';
 export class HeroisComponent implements OnInit {
   
   herois: HeroiModel[] = [];
+  carregando = false;
 
   constructor( private heroisService: HeroisService) { }
 
   ngOnInit() {
+
+    this.carregando = true;
     
     this.heroisService.getHerois()
-      .subscribe((resp: any) => this.herois = resp );
+      .subscribe((resp: any) => {
+        this.herois = resp;
+        this.carregando = false;
+      });
   }
   
   eliminarHeroi(heroi: HeroiModel, i: number) {
     
-   
     Swal.fire({
 
       title: 'Tem certeza disso?',
@@ -41,5 +46,6 @@ export class HeroisComponent implements OnInit {
     })
 
   }
+
 
 }

@@ -10,7 +10,8 @@
     </div>
 </div>
 
-<table class="table mt-4">
+<table  *ngIf="!carregando && herois.length > 0"
+         class="table mt-3 animated fadeIn faster">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -50,20 +51,22 @@
   </tbody>
 </table>
 
-<div class="alert alert-warning text-center mt-3">
-    <h4 class="alert-heading">Nao ha registro</h4>
+<div  *ngIf="!carregando && herois.length === 0"
+     class="alert alert-warning text-center mt-3 animated fadeIn faster">
+     <h4 class="alert-heading">Nao ha registro</h4>
      <p>
          <i class="fa fa-exclamation fa-3x"></i>
      </p>
 
 </div>
 
-<div class="alert alert-info text-center mt-3">
-    <h4 class="alert-heading">Carregando</h4>
-     <p>
-         <i class="fa fa-spinner fa-spin fa-3x"></i>
-     </p>
-     <p class="mb-0">
-       Espere por favor
-     </p>
+<div  *ngIf="carregando"
+      class="alert alert-info text-center mt-3 animated fadeIn faster">
+      <h4 class="alert-heading">Carregando</h4>
+      <p>
+          <i class="fa fa-spinner fa-spin fa-3x"></i>
+      </p>
+      <p class="mb-0">
+        Espere por favor
+      </p>
 </div>

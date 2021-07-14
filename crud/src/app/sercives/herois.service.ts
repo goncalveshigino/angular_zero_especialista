@@ -62,7 +62,8 @@ export class HeroisService {
   getHerois() {
     return this.http.get(`${this.url}/herois.json`)
       .pipe(
-        map( this.createArray ),
+        map(this.createArray),
+        delay(0),
       );
   }
 
