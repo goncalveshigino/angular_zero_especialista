@@ -36,13 +36,14 @@
       <td>
 
        <button class="btn btn-info mr-1" [routerLink]="['/heroi', heroi.id]">
-         <i class="fa fa-open"></i>
+      <i class="fas fa-pencil-alt"></i>
        </button>
 
-          <button class="btn btn-info mr-1">
+        <button class="btn btn-danger" 
+                (click)="eliminarHeroi( heroi, i )">
          <i class="fa fa-trash"></i>
+      
        </button>
-
       </td>
 
    </tr>

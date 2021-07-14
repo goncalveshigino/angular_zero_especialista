@@ -43,7 +43,20 @@ export class HeroisService {
 
     return this.http.put(` ${this.url }/herois/${ heroi.id }.json`, heroiTemp);
     
-  } 
+  }
+  
+
+  //Eliminar Heroi
+  eliminarHeroi( id: string ) {
+    
+    return this.http.delete(`${this.url}/herois/${id}.json`)
+  }
+
+
+  //Pegar apenas um unico heroi e atualizar 
+  getHeroi( id: string ) {
+    return this.http.get(`${this.url}/herois/${id}.json`);
+  }
  
   //Pegar todos herois
   getHerois() {
@@ -74,10 +87,8 @@ export class HeroisService {
     return herois;
   }
 
-  //Para atualizar uma heroi
-  getHeroi(id: string) {
-    return this.http.get(`${ this.url }/herois/${ id }.json`)
-  }
+
+
   
  
 }

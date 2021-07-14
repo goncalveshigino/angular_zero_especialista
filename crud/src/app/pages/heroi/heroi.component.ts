@@ -26,17 +26,21 @@ export class HeroiComponent implements OnInit {
     //Obter o argumento passado pela url
     const id = this.route.snapshot.paramMap.get('id');
     
-    if (id !== 'novo') {
+    if ( id !== 'novo') {
        
-      this.heroisService.getHerois()
-        .subscribe(resp => {
-           console.log(resp);
+      this.heroisService.getHeroi( id)
+        .subscribe((resp: HeroiModel ) => {
+           
+          this.heroi = resp;
+          this.heroi.id = id;
         });
         
     }
     
-
   }
+  
+
+  
 
   salvar( form: NgForm ) {
     

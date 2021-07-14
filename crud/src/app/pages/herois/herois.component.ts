@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroiModel } from 'src/app/models/heroi.model';
 import { HeroisService } from 'src/app/sercives/herois.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-herois',
@@ -17,6 +18,28 @@ export class HeroisComponent implements OnInit {
     
     this.heroisService.getHerois()
       .subscribe((resp: any) => this.herois = resp );
+  }
+  
+  eliminarHeroi(heroi: HeroiModel, i: number) {
+    
+   
+    Swal.fire({
+
+      title: 'Tem certeza disso?',
+      text: `Tem certeza que deseja eliminar ${heroi.nome}`,
+      icon: 'question',
+      showConfirmButton: true,
+      showCancelButton: true
+    }).then(resp => {
+      
+      if( resp.value ){
+        
+       this.herois.splice(i, 1);
+       this.heroisService.eliminarHeroi( heroi.id ).subscribe();
+      }
+
+    })
+
   }
 
 }
