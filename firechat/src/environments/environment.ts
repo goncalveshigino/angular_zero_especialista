@@ -8,13 +8,12 @@
 export const environment = {
   production: false,
    firebase: {
-    apiKey: "AIzaSyA7wWbOsbcXKbEV3hgxBfPz8qzX7k_V6uk",
-    authDomain: "firechat-49447.firebaseapp.com",
-    projectId: "firechat-49447",
-    storageBucket: "firechat-49447.appspot.com",
-    messagingSenderId: "939992167662",
-    appId: "1:939992167662:web:83e0e933382dd74c7a2fff",
-    measurementId: "G-GZF5QTEWRK"
+    apiKey: "AIzaSyC0eFJh2mHbbat1yHj_T85EUukRxbuYDk0",
+    authDomain: "chatonline-e7293.firebaseapp.com",
+    projectId: "chatonline-e7293",
+    storageBucket: "chatonline-e7293.appspot.com",
+    messagingSenderId: "536815872740",
+    appId: "1:536815872740:web:c452c741ef2331f57a9af1"
   }
 };
 
